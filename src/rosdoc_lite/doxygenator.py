@@ -178,7 +178,7 @@ def package_doxygen_template(template, rd_config, path, package, html_dir, heade
             os.makedirs(generate_dir)
 
     print("Generated the following tagfile string %s" % tagfiles)
-    
+
     mdfile = rd_config.get('use_mdfile_as_mainpage', '')
     if mdfile:
         mdfile = os.path.join(path, mdfile)
@@ -208,7 +208,8 @@ def package_doxygen_template(template, rd_config, path, package, html_dir, heade
               '$SEARCHENGINE': rd_config.get('searchengine', 'NO'),
               '$TAB_SIZE': rd_config.get('tab_size', '8'),
               '$TAGFILES': tagfiles,
-              '$USE_MDFILE_AS_MAINPAGE': rd_config.get('use_mdfile_as_mainpage', '')
+              '$USE_MDFILE_AS_MAINPAGE': rd_config.get('use_mdfile_as_mainpage', ''),
+              '$GENERATE_TREEVIEW': rd_config.get('generate_treeview', 'NO')
               }
     return rdcore.instantiate_template(template, dvars)
 
